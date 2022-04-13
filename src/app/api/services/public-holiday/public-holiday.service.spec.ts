@@ -1,5 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { environment } from '@environment';
 
 import { PublicHolidayService } from './public-holiday.service';
@@ -16,11 +16,15 @@ describe('PublicHolidayService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
+  afterEach(() => {
+    httpMock.verify();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call public holiday api and return 200 ok', () => {
+  it('should call public holiday api and return 200 ok', fakeAsync(() => {
     const publicHolidayDummy = [
       {
         date: '2019-01-01',
@@ -36,12 +40,26 @@ describe('PublicHolidayService', () => {
     ];
 
     service.retrievePublicHolidys('2020', 'US').subscribe((publicHolidays) => {
-      expect(publicHolidays.length).toHaveLength(1);
+      expect(publicHolidays).toHaveLength(1);
       expect(publicHolidays).toEqual(publicHolidayDummy);
     });
 
     const req = httpMock.expectOne(`${environment.publicHolidayApi}/2020/US`);
     expect(req.request.method).toBe('GET');
     req.flush(publicHolidayDummy);
-  });
+    tick();
+  }));
+
+  it('should call public with wrong parameters and give error', fakeAsync(() => {
+    const mockErrorResponse = { status: 400, statusText: 'Bad Request' };
+
+    service.retrievePublicHolidys('wrong1', 'wrong2').subscribe({
+      error: (error) => expect(error.status).toEqual(400),
+    });
+
+    const req = httpMock.expectOne(`${environment.publicHolidayApi}/wrong1/wrong2`);
+    expect(req.request.method).toBe('GET');
+    req.flush(null, mockErrorResponse);
+    tick();
+  }));
 });
