@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { PublicHoliday } from '@/api/models/public-holiday.model';
 
 @Component({
   selector: 'app-public-holiday-month',
   templateUrl: './public-holiday-month.component.html',
-  styleUrls: ['./public-holiday-month.component.scss']
+  styleUrls: ['./public-holiday-month.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PublicHolidayMonthComponent implements OnInit {
+export class PublicHolidayMonthComponent {
+  @Input() monthTitle: string;
+  @Input() monthHolidays: PublicHoliday[];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }
