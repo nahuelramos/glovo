@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 
 import { PublicHoliday } from '@/api/models/public-holiday.model';
 
@@ -16,9 +16,9 @@ export const selectIsLoading = createSelector(
   (state: PublicHolidayState) => state.isLoading
 );
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const selectPublicHolidayByMonth = (monthIndex: number) =>
+export const selectPublicHolidayByMonth = (
+  monthIndex: number
+): MemoizedSelector<object, PublicHoliday[], DefaultProjectorFn<PublicHoliday[]>> =>
   createSelector(selectPublicHolidays, (publicHolidays: PublicHoliday[]) =>
     publicHolidays.filter((publicHoliday: PublicHoliday) => publicHoliday.date.getMonth() === monthIndex)
   );

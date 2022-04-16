@@ -15,9 +15,7 @@ import { reducer } from './store/reducers/public-holiday.reducers';
   imports: [
     CommonModule,
     PublicHolidayRoutingModule,
-    StoreModule.forRoot({}),
     StoreModule.forFeature('publicHoliday', reducer),
-    EffectsModule.forRoot([]),
     EffectsModule.forFeature([PublicHolidayEffects]),
   ],
 })
