@@ -1,2 +1,2 @@
-<p>public-holiday works!</p>
-<app-public-holiday-month-list></app-public-holiday-month-list>
+<p *ngIf="isLoading">IS loading ...</p>
+<app-public-holiday-month-list *ngIf="!isLoading"></app-public-holiday-month-list>

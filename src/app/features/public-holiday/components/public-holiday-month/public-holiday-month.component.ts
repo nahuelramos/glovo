@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { PublicHoliday } from '@/api/models/public-holiday.model';
+
+import { selectPublicHolidayByMonth } from '../../store/selectors/public-holiday.selector';
 
 @Component({
   selector: 'app-public-holiday-month',
@@ -8,9 +11,16 @@ import { PublicHoliday } from '@/api/models/public-holiday.model';
   styleUrls: ['./public-holiday-month.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PublicHolidayMonthComponent {
+export class PublicHolidayMonthComponent implements OnInit {
   @Input() monthTitle: string;
-  @Input() monthHolidays: PublicHoliday[];
+  @Input() monthIndex: number;
+  monthHolidays: PublicHoliday[];
 
-  constructor() {}
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.select(selectPublicHolidayByMonth(this.monthIndex)).subscribe({
+      next: (monthHolidays: PublicHoliday[]) => (this.monthHolidays = monthHolidays),
+    });
+  }
 }

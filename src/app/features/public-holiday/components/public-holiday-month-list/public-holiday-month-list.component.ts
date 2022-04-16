@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-public-holiday-month-list',
@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./public-holiday-month-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PublicHolidayMonthListComponent implements OnInit {
+export class PublicHolidayMonthListComponent {
   monthList = [
     'January',
     'February',
@@ -21,8 +21,4 @@ export class PublicHolidayMonthListComponent implements OnInit {
     'November',
     'December',
   ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -8,6 +8,11 @@ const publicHolidayReducer = createReducer(
   on(PublicHolidayActions.fetchPublicHolidaysSuccess, (state, { publicHolidays }) => ({
     ...state,
     publicHolidays: publicHolidays,
+    isLoading: false,
+  })),
+  on(PublicHolidayActions.getPublicHolidays, (state) => ({
+    ...state,
+    isLoading: true,
   }))
 );
 
