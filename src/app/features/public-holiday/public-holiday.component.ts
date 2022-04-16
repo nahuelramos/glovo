@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as PublicHolidayActions from './store/actions/public-holiday.actions';
 
 @Component({
   selector: 'app-public-holiday',
@@ -6,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./public-holiday.component.scss'],
 })
 export class PublicHolidayComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(PublicHolidayActions.getPublicHolidays());
+  }
 }

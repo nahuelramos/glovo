@@ -8,9 +8,8 @@ describe('PublicHolidayMonthListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PublicHolidayMonthListComponent ]
-    })
-    .compileComponents();
+      declarations: [PublicHolidayMonthListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
