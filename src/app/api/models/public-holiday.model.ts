@@ -5,7 +5,7 @@ export interface PublicHoliday {
   countryCode: string;
   fixed: boolean;
   global: boolean;
-  counties: string[];
-  lunchYear: string;
+  counties?: string[];
+  launchYear: string;
   type: string;
 }

@@ -1,6 +1,6 @@
 <div class="month">
   <h4 class="month__title">{{ monthTitle }}</h4>
-  <ul class="month__holidays">
+  <ul class="month__holidays" data-testid="month-list">
     <li *ngFor="let holiday of monthHolidays">{{ holiday.date | date }}: {{ holiday.localName }}</li>
   </ul>
 </div>

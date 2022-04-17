@@ -27,7 +27,7 @@ describe('PublicHolidayService', () => {
   it('should call public holiday api and return 200 ok', fakeAsync(() => {
     const publicHolidayDummy = [
       {
-        date: '2019-01-01',
+        date: new Date('2019-01-01'),
         localName: 'New Years Day',
         name: 'New Years Day',
         countryCode: 'US',

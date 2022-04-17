@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponent } from 'ng-mocks';
 
+import { PublicHolidayMonthComponent } from '../public-holiday-month/public-holiday-month.component';
 import { PublicHolidayMonthListComponent } from './public-holiday-month-list.component';
 
 describe('PublicHolidayMonthListComponent', () => {
@@ -8,7 +10,7 @@ describe('PublicHolidayMonthListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PublicHolidayMonthListComponent],
+      declarations: [PublicHolidayMonthListComponent, MockComponent(PublicHolidayMonthComponent)],
     }).compileComponents();
   });
 
