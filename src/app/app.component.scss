@@ -1,0 +1,48 @@
+.page-header {
+  background: linear-gradient(0deg,rgba(44,44,44,.2),rgba(224,23,3,.6));
+  height: 100vh;
+
+  &__image {
+    background-image: url(../../src/assets/images/header.jpg);
+    transform: translate3d(0px, 0px, 0px);
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &__center {
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.center {
+
+  &__title {
+    font-size: 100px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+
+    button {
+      font-size: 15px;
+      border-bottom: 1px solid transparent;
+      box-shadow: white 13px 9px 33px -16px
+    }
+
+    button:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+}
