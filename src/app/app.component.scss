@@ -1,5 +1,5 @@
 .page-header {
-  background: linear-gradient(0deg,rgba(44,44,44,.2),rgba(224,23,3,.6));
+  background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
   height: 100vh;
 
   &__image {
@@ -24,7 +24,6 @@
 }
 
 .center {
-
   &__title {
     font-size: 100px;
   }
@@ -38,7 +37,7 @@
     button {
       font-size: 15px;
       border-bottom: 1px solid transparent;
-      box-shadow: white 13px 9px 33px -16px
+      box-shadow: white 13px 9px 33px -16px;
     }
 
     button:hover {
