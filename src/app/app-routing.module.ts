@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'assessment',
+    canActivate: [],
+    loadChildren: () => import('./features/assessment/assessment.module').then((m) => m.AssessmentModule),
+  },
+  {
     path: 'public-holiday',
     canActivate: [],
     loadChildren: () => import('./features/public-holiday/public-holiday.module').then((m) => m.PublicHolidayModule),
