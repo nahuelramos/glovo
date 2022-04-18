@@ -15,7 +15,7 @@ export class PublicHolidayEffects {
     this.actions$.pipe(
       ofType(PublicHolidayActions.getPublicHolidays.type),
       mergeMap(() =>
-        this.publicHolidaysService.retrievePublicHolidys('2022', 'ES').pipe(
+        this.publicHolidaysService.retrievePublicHolidays('2022', 'ES').pipe(
           map((publicHolidays) => PublicHolidayActions.fetchPublicHolidaysSuccess({ publicHolidays })),
           catchError(() => EMPTY)
         )

@@ -11,7 +11,7 @@ import { PublicHoliday } from '../../models/public-holiday.model';
 export class PublicHolidayService {
   constructor(private httpClient: HttpClient) {}
 
-  retrievePublicHolidys(year: string, countryCode: string): Observable<PublicHoliday[]> {
+  retrievePublicHolidays(year: string, countryCode: string): Observable<PublicHoliday[]> {
     const headers = new HttpHeaders({ 'X-RapidAPI-Key': environment.apiKey });
 
     return this.httpClient

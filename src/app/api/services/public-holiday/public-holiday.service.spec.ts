@@ -39,7 +39,7 @@ describe('PublicHolidayService', () => {
       },
     ];
 
-    service.retrievePublicHolidys('2020', 'US').subscribe((publicHolidays) => {
+    service.retrievePublicHolidays('2020', 'US').subscribe((publicHolidays) => {
       expect(publicHolidays).toHaveLength(1);
       expect(publicHolidays).toEqual(publicHolidayDummy);
     });
@@ -53,7 +53,7 @@ describe('PublicHolidayService', () => {
   it('should call public with wrong parameters and give error', fakeAsync(() => {
     const mockErrorResponse = { status: 400, statusText: 'Bad Request' };
 
-    service.retrievePublicHolidys('wrong1', 'wrong2').subscribe({
+    service.retrievePublicHolidays('wrong1', 'wrong2').subscribe({
       error: (error) => expect(error.status).toEqual(400),
     });
 

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButton } from '@angular/material/button';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponent } from 'ng-mocks';
 
 import { HomeComponent } from './home.component';
@@ -11,6 +12,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent, MockComponent(MatButton)],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 
