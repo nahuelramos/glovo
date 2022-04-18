@@ -123,7 +123,7 @@
         "unicorn/no-array-reduce": "off",
         "unicorn/no-array-for-each": "off",
         "unicorn/prevent-abbreviations": "off",
-
+        "unicorn/consistent-function-scoping": "off",
         "unused-imports/no-unused-imports-ts": "error",
         "unused-imports/no-unused-vars-ts": [
           "error",
