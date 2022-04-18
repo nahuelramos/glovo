@@ -13,22 +13,21 @@ describe('PublicHolidayEffects', () => {
   let service: PublicHolidayEffects;
   let actions$: Subject<Action>;
   let effects: PublicHolidayEffects;
+  const publicHolidaysMock = [
+    {
+      date: new Date('2019-01-01'),
+      localName: 'New Years Day',
+      name: 'New Years Day',
+      countryCode: 'US',
+      fixed: false,
+      global: true,
+      counties: null,
+      launchYear: null,
+      type: 'Public',
+    },
+  ];
   const publicHolidayServiceStub: Partial<PublicHolidayService> = {
-    retrievePublicHolidays: jest.fn().mockReturnValue(
-      of([
-        {
-          date: new Date('2019-01-01'),
-          localName: 'New Years Day',
-          name: 'New Years Day',
-          countryCode: 'US',
-          fixed: false,
-          global: true,
-          counties: null,
-          launchYear: null,
-          type: 'Public',
-        },
-      ])
-    ),
+    retrievePublicHolidays: jest.fn().mockReturnValue(of(publicHolidaysMock)),
   };
 
   beforeEach(() => {
@@ -50,30 +49,27 @@ describe('PublicHolidayEffects', () => {
   });
 
   it('should fetch public holidays in the store', fakeAsync(() => {
-    expect(service).toBeTruthy();
     actions$ = new Subject();
-    actions$.next(PublicHolidayActions.getPublicHolidays);
 
-    tick();
     effects.loadPublicHolidays$.subscribe({
       next: (action) => {
         expect(action).toEqual({
-          type: effects.loadPublicHolidays$,
-          pubpublicHolidays: [
-            {
-              date: new Date('2019-01-01'),
-              localName: 'New Years Day',
-              name: 'New Years Day',
-              countryCode: 'US',
-              fixed: false,
-              global: true,
-              counties: null,
-              launchYear: null,
-              type: 'Public',
-            },
-          ],
+          type: PublicHolidayActions.fetchPublicHolidaysSuccess.type,
+          publicHolidays: publicHolidaysMock,
         });
       },
     });
+    actions$.next(PublicHolidayActions.getPublicHolidays);
+    tick();
+  }));
+
+  it('should not fetch public holidays in the store', fakeAsync(() => {
+    actions$ = new Subject();
+
+    effects.loadPublicHolidays$.subscribe({
+      error: (error) => expect(error).toStrictEqual({}),
+    });
+    actions$.error({});
+    tick();
   }));
 });
