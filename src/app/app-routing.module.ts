@@ -8,14 +8,14 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'public-holiday',
-    canActivate: [],
-    loadChildren: () => import('./features/public-holiday/public-holiday.module').then((m) => m.PublicHolidayModule),
-  },
-  {
     path: 'home',
     canActivate: [],
     loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'public-holiday',
+    canActivate: [],
+    loadChildren: () => import('./features/public-holiday/public-holiday.module').then((m) => m.PublicHolidayModule),
   },
 ];
 
