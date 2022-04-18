@@ -4,13 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'public-holiday',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: 'public-holiday',
     canActivate: [],
     loadChildren: () => import('./features/public-holiday/public-holiday.module').then((m) => m.PublicHolidayModule),
+  },
+  {
+    path: 'home',
+    canActivate: [],
+    loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
   },
 ];
 
