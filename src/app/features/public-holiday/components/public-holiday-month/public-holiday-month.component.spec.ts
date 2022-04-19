@@ -60,10 +60,11 @@ describe('PublicHolidayMonthComponent', () => {
 
     fixture.detectChanges();
     tick();
-    const element = screen.getByTestId('month-list');
+    const element = screen.getByTestId('month-list').querySelectorAll('li');
 
     expect(spyStore).toHaveBeenCalled();
-    expect(element.children.item(0)?.innerHTML).toContain(holiday.name);
+    expect(element).toHaveLength(1);
+    expect(element.item(0).textContent).toContain(component.monthHolidays[0].name);
     expect(component.monthHolidays).toHaveLength(1);
   }));
 });
