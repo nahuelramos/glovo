@@ -22,6 +22,11 @@ const routes: Routes = [
     canActivate: [],
     loadChildren: () => import('./features/public-holiday/public-holiday.module').then((m) => m.PublicHolidayModule),
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
