@@ -28,8 +28,6 @@ html {
   counter-reset: div;
 }
 
-
-
 /* spanning cols */
 
 .col-1 {
@@ -59,7 +57,6 @@ html {
 .col-12 {
   grid-column: auto/span 12;
 }
-
 
 /* spanning rows , complete values missing*/
 
